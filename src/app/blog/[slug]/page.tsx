@@ -13,19 +13,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: {
-    slug: string;
-  };
+  params: { slug: string };
 }): Promise<Metadata | undefined> {
-  let post = await getPost(params.slug);
+  const post = await getPost(params.slug);
+  if (!post) return undefined;
 
-  let {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    image,
-  } = post.metadata;
-  let ogImage = image ? `${DATA.url}${image}` : `${DATA.url}/og?title=${title}`;
+  const { title, publishedAt: publishedTime, summary: description, image } = post.metadata;
+  const ogImage = image ? `${DATA.url}${image}` : `${DATA.url}/og?title=${title}`;
 
   return {
     title,
@@ -36,11 +30,7 @@ export async function generateMetadata({
       type: "article",
       publishedTime,
       url: `${DATA.url}/blog/${post.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
+      images: [{ url: ogImage }],
     },
     twitter: {
       card: "summary_large_image",
@@ -51,14 +41,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function Blog({
+export default async function BlogPost({
   params,
 }: {
-  params: {
-    slug: string;
-  };
+  params: { slug: string };
 }) {
-  let post = await getPost(params.slug);
+  const post = await getPost(params.slug);
 
   if (!post) {
     notFound();
@@ -101,7 +89,7 @@ export default async function Blog({
       <article
         className="prose dark:prose-invert"
         dangerouslySetInnerHTML={{ __html: post.source }}
-      ></article>
+      />
     </section>
   );
 }

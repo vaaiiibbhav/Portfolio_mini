@@ -1,47 +1,39 @@
-<div align="center">
-<img alt="Portfolio" src="https://github.com/dillionverma/portfolio/assets/16860528/57ffca81-3f0a-4425-b31d-094f61725455" width="90%">
-</div>
+# Vaibhav Verma — Portfolio
 
-# Portfolio [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdillionverma%2Fportfolio)
+A personal portfolio built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), and [Magic UI](https://magicui.design/).
 
-Built with next.js, [shadcn/ui](https://ui.shadcn.com/), and [magic ui](https://magicui.design/), deployed on Vercel.
+## Features
 
-# Features
+- Built with Next.js 14 (App Router)
+- Responsive design with Tailwind CSS
+- Smooth animations with Framer Motion / Magic UI
+- Blog powered by MDX
+- Dark mode support
+- SEO optimised
 
-- Setup only takes a few minutes by editing the [single config file](./src/data/resume.tsx)
-- Built using Next.js 14, React, Typescript, Shadcn/UI, TailwindCSS, Framer Motion, Magic UI
-- Includes a blog
-- Responsive for different devices
-- Optimized for Next.js and Vercel
+## Getting Started
 
-# Getting Started Locally
+```bash
+git clone https://github.com/vaaiiibbhav/Portfolio_mini
+cd Portfolio_mini
+npm install
+npm run dev
+```
 
-1. Clone this repository to your local machine:
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-   ```bash
-   git clone https://github.com/dillionverma/portfolio
-   ```
+## Customisation
 
-2. Move to the cloned directory
+Edit [`src/data/resume.tsx`](src/data/resume.tsx) to update your personal information, skills, projects, and social links.
 
-   ```bash
-   cd portfolio
-   ```
+## Tech Stack
 
-3. Install dependencies:
+- **Framework**: Next.js 14
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion, Magic UI
+- **Blog**: MDX + rehype-pretty-code
+- **Deployment**: Vercel
 
-   ```bash
-   pnpm install
-   ```
+## License
 
-4. Start the local Server:
-
-   ```bash
-   pnpm dev
-   ```
-
-5. Open the [Config file](./src/data/resume.tsx) and make changes
-
-# License
-
-Licensed under the [MIT license](https://github.com/dillionverma/portfolio/blob/main/LICENSE.md).
+MIT

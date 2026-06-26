@@ -5,13 +5,6 @@ import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
@@ -21,6 +14,7 @@ const BLUR_FADE_DELAY = 0.04;
 export default function Page() {
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
+      {/* Hero */}
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 flex justify-between">
@@ -46,21 +40,25 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      {/* Availability Banner */}
       <section id="availability">
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
           <div className="rounded-lg border bg-card p-4 text-center">
             <div className="flex items-center justify-center gap-2">
               <span className="relative flex h-3 w-3">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500"></span>
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500" />
               </span>
               <p className="text-sm font-medium">
-                {DATA.availability.status} - {DATA.availability.message}
+                {DATA.availability.status} — {DATA.availability.message}
               </p>
             </div>
           </div>
         </BlurFade>
       </section>
+
+      {/* About */}
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <h2 className="text-xl font-bold">About</h2>
@@ -71,60 +69,8 @@ export default function Page() {
           </Markdown>
         </BlurFade>
       </section>
-      {/* <section id="services">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 6}>
-            <h2 className="text-xl font-bold">Services</h2>
-          </BlurFade>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {DATA.services.map((service, id) => (
-              <BlurFade
-                key={service.title}
-                delay={BLUR_FADE_DELAY * 7 + id * 0.05}
-              >
-                <Card className="h-full border hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl">{service.icon}</span>
-                      <CardTitle className="text-lg">{service.title}</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-sm">
-                      {service.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </BlurFade>
-            ))}
-          </div>
-        </div>
-      </section> */}
-      {/* <section id="work">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 8}>
-            <h2 className="text-xl font-bold">Work Experience</h2>
-          </BlurFade>
-          {DATA.work.map((work, id) => (
-            <BlurFade
-              key={work.company}
-              delay={BLUR_FADE_DELAY * 9 + id * 0.05}
-            >
-              <ResumeCard
-                key={work.company}
-                logoUrl={work.logoUrl}
-                altText={work.company}
-                title={work.company}
-                subtitle={work.title}
-                href={work.href}
-                badges={work.badges}
-                period={`${work.start} - ${work.end ?? "Present"}`}
-                description={work.description}
-              />
-            </BlurFade>
-          ))}
-        </div>
-      </section> */}
+
+      {/* Education */}
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 10}>
@@ -136,7 +82,6 @@ export default function Page() {
               delay={BLUR_FADE_DELAY * 11 + id * 0.05}
             >
               <ResumeCard
-                key={education.school}
                 href={education.href}
                 logoUrl={education.logoUrl}
                 altText={education.school}
@@ -148,6 +93,8 @@ export default function Page() {
           ))}
         </div>
       </section>
+
+      {/* Skills */}
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 12}>
@@ -156,12 +103,14 @@ export default function Page() {
           <div className="flex flex-wrap gap-1">
             {DATA.skills.map((skill, id) => (
               <BlurFade key={skill} delay={BLUR_FADE_DELAY * 13 + id * 0.05}>
-                <Badge key={skill}>{skill}</Badge>
+                <Badge>{skill}</Badge>
               </BlurFade>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Projects */}
       <section id="projects">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 14}>
@@ -174,8 +123,8 @@ export default function Page() {
                   Check out my latest work
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  I&apos;ve worked on a variety of projects, from simple
-                  websites to complex web applications. Here are a few of my
+                  I&apos;ve worked on a variety of projects, from web
+                  applications to machine learning systems. Here are a few of my
                   favorites.
                 </p>
               </div>
@@ -189,7 +138,6 @@ export default function Page() {
               >
                 <ProjectCard
                   href={project.href}
-                  key={project.title}
                   title={project.title}
                   description={project.description}
                   dates={project.dates}
@@ -203,30 +151,32 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <section id="collaboration">
+
+      {/* Contact / Collaboration */}
+      <section id="contact">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
             <div className="space-y-4">
               <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                Freelance & Collaboration
+                Let&apos;s Connect
               </div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Ready to Build Something Great?
+                Open to Opportunities
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                I&apos;m available for freelance projects, consulting, and
-                collaborations. Whether you need a Web3 dApp, a full-stack
-                application, or smart contract development, let&apos;s discuss
-                how I can help bring your vision to life.
+                I&apos;m actively looking for internships and collaborative
+                projects. Whether it&apos;s a full-stack application, a machine
+                learning system, or anything in between — let&apos;s build
+                something great together.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-4">
                 <Button asChild size="lg" className="w-full sm:w-auto">
                   <Link
-                    href="https://cal.com/adxtya-jha/15min"
+                    href={`mailto:${DATA.contact.email}?subject=Internship Inquiry`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Book a Free Consultation
+                    Get in Touch
                   </Link>
                 </Button>
                 <Button
@@ -236,9 +186,11 @@ export default function Page() {
                   className="w-full sm:w-auto"
                 >
                   <Link
-                    href={`mailto:${DATA.contact.email}?subject=Freelance Project Inquiry`}
+                    href={DATA.contact.social.GitHub.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    Send an Email
+                    View GitHub
                   </Link>
                 </Button>
               </div>
